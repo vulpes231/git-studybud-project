@@ -123,7 +123,7 @@ header .header__container {
     padding: var(--ALTPADDING);
     width: 130px;
     border-radius: var(--BR);
-    background-color: var(--ALTBGCOLOR);
+    background-color: var(--TBGCOLOR);
     border: none;
     color: var(--NEWBGCOLOR);
     outline: none;
