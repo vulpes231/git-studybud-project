@@ -1,0 +1,13 @@
+<div class="btn__container">
+    <div class="sidebar__btn">
+        <a href="{% url 'main' %}">All</a>
+    </div>
+
+    {% for topic in topics %}
+        <div class="sidebar__btn">
+            <a href="{% url 'main' %}?q={{topic.name}}">
+                {{topic.name}}
+            </a>
+        </div>
+    {% endfor %}
+</div>

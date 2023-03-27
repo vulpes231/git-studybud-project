@@ -1,0 +1,25 @@
+{% load static %}
+<h3>Recent Activities</h3>
+
+{% for message in room_messages%}
+    <div class="aside__msg">
+        
+        <div class="timestamp">
+            <img src="{% static 'img/slider.jpg' %}" alt="" class="feed__photo" width="50" height="50">
+            <a href="{% url 'profile' message.user.id%}">@{{message.user}}</a>
+        </div>
+        <small>{{message.created | timesince}}</small>
+        
+        <p class="aside__post">
+            replied to post "{{message.room}}"
+        </p>
+
+        <p class="aside__msg2">{{message}}</p>
+        {% if request.user == message.user %}
+            <div>
+                <a href="{% url 'delete-message' message.id%}">Delete</a>
+            </div>
+        {% endif %}
+       
+    </div>
+{% endfor %}

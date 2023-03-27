@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+    <section class="room__container">
+        
+        <div class="room__holder">
+            
+            <div>
+                <p class="study__roomtxt">Study room</p>
+                <div class="study__room">
+                    <div class="room__name">
+                        <h2>{{room.name}}</h2>
+                        <small>{{room.created | timesince}}</small>
+                    </div>
+                    <h5>Hosted by</h5>
+                    <div class="user__contact">
+                        <img src="{% static 'img/slider.jpg' %}" alt="" class="feed__photo" width="50" height="50">
+                        <a href="{% url 'profile' room.host.id%}">@{{room.host}}</a>
+                    </div>
+                  
+                        
+                    {% for message in messages %}
+                        <div class="comment-wrapper">
+                            {% if request.user == message.user %}
+                                <div>
+                                    <a href="{% url 'delete-message' message.id%}">Delete</a>
+                                </div>
+                            {% endif %}
+                            <small>@{{message.user}} {{message.created | timesince}}</small>
+                            <p>{{message.body}}</p>
+                        </div>
+                    {% endfor %}
+                  
+                    {% if request.user.is_authenticated %}
+                        <div class="comment__form">
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="text" name="body" placeholder="Write your message here...">
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="participants">
+                <p class="study__roomtxt">Participants</p>
+                <div >
+                    {% for user in participants %}
+                        <div class="user__parti">
+                            <img src="{% static 'img/slider.jpg' %}" alt="" class="feed__photo" width="50" height="50">
+                            <p>@{{user.username}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content%}

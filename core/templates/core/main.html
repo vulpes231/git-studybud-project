@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <main>
+        
+        <div class="sidebar">
+            <h3>Browse Topics</h3>
+            {% include 'core/topics.html' %}
+        </div>
+        <div class="main-content">
+            <div class="create__room__header">
+                <div>
+                    <h3>ROOMS</h3>
+                    <p>{{room_count}} rooms available</p>
+                </div>
+                <a id="create-room-btn" href="{% url 'create-room' %}">
+                    Create Room
+                </a>
+            </div>
+            <div>
+                {% include 'core/room_post.html' %}
+            </div>
+            
+        </div>
+        <div class="aside">
+            {% include 'core/feed.html' %}
+        </div>
+    </main>
+{% endblock content%}

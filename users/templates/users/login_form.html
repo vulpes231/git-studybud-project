@@ -1,0 +1,28 @@
+<form class="login__form" method="post">
+    {% csrf_token %}
+    <p>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="messages-disp">
+                        {{message}}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </p>
+    <p>
+        <label>Username</label>
+        <input type="username" name="username" placeholder="Enter username..">
+    </p>
+    <p>
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter password..">
+    </p>
+    
+    <input class="login__btn" type="submit" value="Login">
+    <div class="sign__up__prompt">
+        <p>Haven't signed up yet?</p>
+        <a href="{% url 'register' %}">Sign Up</a>
+    </div>
+</form>

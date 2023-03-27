@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <section class="container">
+        <form method="post" class="room__form">
+            {% csrf_token %}
+            <p>{{form.as_p}}</p>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+{% endblock content%}
