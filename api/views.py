@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
-from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from core.models import Room
+from .serializers import RoomSerializer
 
-
+@api_view(['GET'])
 def getRoutes(request):
     routes = [
         'GET /api',
@@ -10,4 +13,10 @@ def getRoutes(request):
         'GET /api/rooms/:id'
     ]
 
-    return JsonResponse(routes, safe=False)
+    return Response(routes)
+
+
+@api_view(['GET'])
+def getRooms(request):
+    rooms = Room.objects.all()
+    return Response(rooms)
