@@ -8,7 +8,7 @@
             <ul class="nav__links">
                 {% if request.user.is_authenticated %}
                     <li>
-                        <a href="{% url 'update-user' %}">@{{user.username}}</a>
+                        <a href="{% url 'profile' request.user.id%}">@{{user.username}}</a>
                     </li>
                     
                     <li>

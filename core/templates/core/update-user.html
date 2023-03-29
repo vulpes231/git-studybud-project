@@ -3,7 +3,7 @@
     <section class="container__user">
         <div class="edit__user">
             <h3>Edit Your Profile</h3>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
                     <label for="">{{field.label}}</label>

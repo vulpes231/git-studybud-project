@@ -5,10 +5,10 @@
     <div class="aside__msg">
         
         <div class="timestamp">
-            <img src="{% static 'img/slider.jpg' %}" alt="" class="feed__photo" width="50" height="50">
-            <a href="{% url 'profile' message.user.id%}">@{{message.user}}</a>
+            <img src="{{message.user.avatar.url}}" alt="profile_pic" class="feed__photo" width="50" height="50">
+            <a href="{% url 'profile' message.user.id%}">@{{message.user.username}}</a>
         </div>
-        <small>{{message.created | timesince}}</small>
+        <small>{{message.created | timesince}} ago</small>
         
         <p class="aside__post">
             replied to post "{{message.room}}"

@@ -5,7 +5,7 @@ from .models import Room, Topic, Message, User
 from django.contrib.auth.decorators import login_required
 
 
-from .forms import RoomForm, UserForm
+from .forms import RoomForm, UserForm, MyUserCreationForm
 
 
 # MAIN PAGE
@@ -143,7 +143,7 @@ def updateUser(request):
     form = UserForm(instance=user)
 
     if request.method == "POST":
-        form = UserForm(request.POST, instance=user)
+        form = UserForm(request.POST, request.FILES, instance=user)
 
         if form.is_valid():
             form.save()

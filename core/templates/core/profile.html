@@ -8,7 +8,7 @@
         </div>
         <div class="main-content">
             <div class="profile__info">
-                <img src="{% static 'img/slider.jpg' %}" alt="" class="profile__photo" width="50" height="50">
+                <img src="{{request.user.avatar.url}}" alt="" class="profile__photo" width="50" height="50">
                 <p>@{{user.username}}</p>
                 {% if request.user == user %}
                     <a href="{% url 'update-user' %}">Edit Profile</a>
@@ -17,7 +17,7 @@
             <div class="profile__about">
                 <h3>About</h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio consequatur sint sit totam nostrum architecto iusto accusamus molestias minus deserunt.
+                    {{request.user.bio}}
                 </p>
             </div>
             <h3 class="profile__header">Rooms hosted by {{user.username}}</h3>
